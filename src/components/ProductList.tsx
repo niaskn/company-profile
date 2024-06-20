@@ -11,7 +11,7 @@ const ProductList = async () => {
         Products List
       </h1>
       <div className="grid grid-cols-3 gap-10">
-        {products.map((product: Product, index: any) => {
+        {products.map((product: Product, index: number) => {
           return (
             <div className="flex-wrap rounded overflow-hidden shadow-lg p-2" key={index}>
               <ul>
