@@ -4,8 +4,20 @@ import { Product } from "@/utils/interface/product";
 import { getProducts } from "@/api/product";
 import Image from "next/image";
 
-const ProductList = async () => {
+export const getStaticProps = async () => {
   const products: Product[] = await getProducts();
+  return {
+    props: {
+      products,
+    },
+  };
+};
+
+interface Props {
+  products: Product[];
+}
+
+const ProductList = ({ products }: Props) => {
   console.log("products : ", products);
   return (
     <main className="flex flex-col items-center">
@@ -23,7 +35,7 @@ const ProductList = async () => {
                 src={product.image}
                 width={300}
                 height={300}
-                alt="Picture" // eslint-disable-line react/no-unescaped-entities
+                alt="Picture"
                 className="w-52 h-52 mx-auto p-5"
               />
               <li className="w-52 h-52 mx-auto p-5 text-brown-100 text-base">
