@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unescaped-entities */
+
 import { Product } from "@/utils/interface/product";
 import { getProducts } from "@/api/product";
 import Image from "next/image";
@@ -11,30 +13,28 @@ const ProductList = async () => {
         Products List
       </h1>
       <div className="grid grid-cols-3 gap-10">
-        {products.map((product: Product, index: number) => {
-          return (
-            <div className="flex-wrap rounded overflow-hidden shadow-lg p-2" key={index}>
-              <ul>
-                <li className="justify-center flex text-xl font-bold text-pink-900 mt-5">
-                  {product.name}
-                </li>
-                <Image
-                  src={product.image}
-                  width={300}
-                  height={300}
-                  alt="Picture"
-                  className="w-52 h-52 mx-auto p-5"
-                />
-                <li className="w-52 h-52 mx-auto p-5 text-brown-100 text-base">
-                  {product.description}
-                </li>
-                <li className="w-52 mx-auto p-5 font-semibold">
-                  Price: Rp{product.price}
-                </li>
-              </ul>
-            </div>
-          );
-        })}
+        {products.map((product: Product, index: number) => (
+          <div className="flex-wrap rounded overflow-hidden shadow-lg p-2" key={index}>
+            <ul>
+              <li className="justify-center flex text-xl font-bold text-pink-900 mt-5">
+                {product.name}
+              </li>
+              <Image
+                src={product.image}
+                width={300}
+                height={300}
+                alt="Picture" // eslint-disable-line react/no-unescaped-entities
+                className="w-52 h-52 mx-auto p-5"
+              />
+              <li className="w-52 h-52 mx-auto p-5 text-brown-100 text-base">
+                {product.description}
+              </li>
+              <li className="w-52 mx-auto p-5 font-semibold">
+                Price: Rp{product.price}
+              </li>
+            </ul>
+          </div>
+        ))}
       </div>
     </main>
   );
